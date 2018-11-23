@@ -21,13 +21,16 @@ public class Main
 
                 odabir1 = unos.nextInt();
 
-                if(odabir1!=1 || odabir1!=2  || odabir1!=0)
+                if(odabir1!=1 && odabir1!=2  && odabir1!=0)
                     System.out.println("Unijeli ste pogresnu naredbu, unesite ponovo");
 
             }while(odabir1!=1 && odabir1!=2 && odabir1!=0);
 
             if(odabir1==0)
+            {
+                System.out.println("Morate platiti: "+ suma+ ", hvala na posjeti");
                 break;
+            }
 
             unos.nextLine(); // da pokupi enter
 
@@ -99,7 +102,10 @@ public class Main
 
                     try
                     {
+                        if(knjiz.posjedujeLiJe(k)==false)
                         knjiz.dodaj(k);
+                        else
+                            System.out.println("Knjiga vec postoji u knjizari");
                     }
                     catch(Exception e)
                     {
@@ -204,7 +210,7 @@ public class Main
                 try
                 {
                     if(knjiz.posjedujeLiJe(k)==true)
-                        suma= suma + k.zaPlatiti(br_dana, str_dob)
+                        suma= suma + k.zaPlatiti(br_dana, str_dob);
                     else
                         System.out.println("Unijeta knjiga ne postoji u knjizari");
                 }
